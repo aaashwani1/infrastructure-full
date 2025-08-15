@@ -6,7 +6,8 @@ data "azurerm_resource_group" "resource_group_data_block" {
 
 
 resource "azurerm_key_vault" "key_vault_resource_block" {
-  name                        = var.key_vault_name
+  # name                        = var.key_vault_name
+  name                        = "rit-key-vault-${random_string.suffix.result}"
   location                    = data.azurerm_resource_group.resource_group_data_block.location
   resource_group_name         = data.azurerm_resource_group.resource_group_data_block.name
   tenant_id                   = data.azurerm_client_config.current.tenant_id
